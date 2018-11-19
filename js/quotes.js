@@ -1,10 +1,27 @@
 const quoteTag = document.querySelector("h1")
+const authorTag = document.querySelector("p")
 const randomTag = document.querySelector("footer img")
 
-const getQuote = function() {
-    //get a random quote and put it in the site
+let data = []
 
-    quoteTag.innerHTML = "This was loaded with JS " + Math.random()
+// load in the real data
+fetch("./js/quotes.jason").then(function(response) {
+    return response.json()
+}).then(function(jsonData) {
+    data = jsonData
+})
+
+const getQuote = function() {
+
+    if (data.length > 0) {
+    //get a random quote 
+    const randomNumber = Math.floor(Math.random() * data.length)
+    const randomQuote = data[randomNumber]
+    
+    // and put it in the site
+    quoteTag.innerHTML = randomQuote.quote
+    authorTag.innerHTML = randomQuote.author
+    }
 
 }
 
