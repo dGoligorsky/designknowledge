@@ -47,3 +47,7 @@ footer {
     text-align: center;
     padding: 30px;
 }
+
+img {
+    cursor: pointer;
+}
